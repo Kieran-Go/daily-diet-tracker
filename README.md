@@ -1,1 +1,1 @@
-# daily-diet-tracker
+A personal project to help me keep track of the food I have eaten throughout the day, for health purposes.
