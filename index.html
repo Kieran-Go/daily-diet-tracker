@@ -3,10 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Daily Diet Tracker</title>
 </head>
 <body>
-    
+    <div class="master-container">
+        <h1>Daily Diet Tracker</h1>
+
+        <div class="input-container">
+            <div>
+                <label for="food">Choose a food:</label>
+                <select name="food" id="food-selector">
+                    <option hidden disabled selected value></option>
+                </select>
+            </div>
+            <div>
+                <label for="amount">Amount (grams):</label>
+                <input type="text" class="amount" value="" autocomplete="off">
+                <p id="amount-default"></p>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button class="btn-add-food">Add food</button>
+        </div>
+
+        <div class="totals-container">
+            <table>
+                <caption>Total:</caption>
+                <tbody>
+                    <tr>
+                        <td>Calories</td>
+                        <td id="cal-data">0</td>
+                    </tr>
+                    <tr>
+                        <td>Protein</td>
+                        <td id="pro-data">0 g</td>
+                    </tr>
+                    <tr>
+                        <td>Carbohydrates</td>
+                        <td id="carb-data">0 g</td>
+                    </tr>
+                    <tr>
+                        <td>Sodium</td>
+                        <td id="sod-data">0 mg</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <caption>Food Eaten:</caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Calories</th>
+                        <th>Protein</th>
+                        <th>Carbs</th>
+                        <th>Sodium</th>
+                    </tr>
+                </thead>
+                <tbody class="food-table">
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 <script src="js/script.js"></script>
 </html>
