@@ -1,3 +1,4 @@
+// Food constructor
 function Food(name, serveSize, cals, protein, carbs, sodium){
     this.name = name;
     this.serveSize = serveSize;
@@ -9,9 +10,10 @@ function Food(name, serveSize, cals, protein, carbs, sodium){
 
 function addFood(food, amount){
     const scale = amount / food.serveSize;
+    const newServeSize = amount % 1 == 0 ? amount : amount.toFixed();
     const newItem = {
         name: food.name,
-        serveSize: amount,
+        serveSize: newServeSize,
         cals: food.cals * scale,
         protein: food.protein * scale,
         carbs: food.carbs * scale,
@@ -94,7 +96,21 @@ function populateTable(){
         <td>${food.protein}</td>
         <td>${food.carbs}</td>
         <td>${food.sodium}</td>
+        <td class='btn-remove'><button id='btn-remove-${i}'>X</button></td>
         </tr>`
+    }
+
+    initRemoveButtons();
+}
+
+function initRemoveButtons(){
+    for(let i = 0; i < eatenFoods.length; i++){
+        const btn = document.getElementById(`btn-remove-${i}`);
+        btn.addEventListener("click", () =>{
+            eatenFoods.splice(i, 1);
+            populateTable();
+            calcTotals();
+        });
     }
 }
 
@@ -102,11 +118,11 @@ function populateTable(){
 const oats = new Food("Uncle Toby's Oats", 40, 153, 5.1, 22.7, 2);
 const frozenBerries = new Food("Mixed Frozen Berries", 150, 61, 1.3, 10.3, 5);
 const liteMilk = new Food("Lite Milk", 250, 111, 8.8, 11.5, 110);
-let foodItems = [oats, frozenBerries, liteMilk];
+const foodItems = [oats, frozenBerries, liteMilk];
 sortFoodSelector();
 
 // Initialize the 'eaten foods' array
-let eatenFoods = [];
+const eatenFoods = [];
 
 // Initialize the totals
 let totalCals = 0;
@@ -114,6 +130,7 @@ let totalProtein = 0;
 let totalCarbs = 0;
 let totalSodium = 0;
 
+// Initialize the food selector
 const foodSelector = document.getElementById("food-selector");
 populateFoodSelector();
 foodSelector.addEventListener("change", () =>{
@@ -133,6 +150,7 @@ foodSelector.addEventListener("change", () =>{
 const addBtn = document.querySelector(".btn-add-food");
 addBtn.addEventListener("click", () =>{
     const amount = document.querySelector(".amount").value;
+    if(amount != "" && !isNaN(amount) && amount > 0)
     for(let i = 0; i < foodItems.length; i++){
         const food = foodItems[i];
         if(foodSelector.value === foodItems[i].name){
