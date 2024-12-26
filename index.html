@@ -21,11 +21,15 @@
             <div>
                 <label for="amount">Amount (grams):</label>
                 <input type="number" min="1" class="amount" value="" autocomplete="off">
-                <p id="amount-default"></p>
+                <p id="amount-default">1 serving =</p>
             </div>
         </div>
+
         <div class="btn-container">
             <button class="btn-add-food">Add food</button>
+        </div>
+        <div class="btn-container">
+            <button class="btn-clear-table">Clear Table</button>
         </div>
 
         <div class="totals-container">
@@ -34,7 +38,7 @@
                 <tbody>
                     <tr>
                         <td>Calories</td>
-                        <td id="cal-data">0</td>
+                        <td id="cal-data">0 g</td>
                     </tr>
                     <tr>
                         <td>Protein</td>

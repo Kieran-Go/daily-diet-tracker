@@ -20,6 +20,7 @@ function addFood(food, amount){
         sodium: food.sodium * scale
     }
     eatenFoods.push(newItem);
+    saveToLocalStorage('eatenFoods', eatenFoods);
     calcTotals();
 }
 
@@ -108,27 +109,40 @@ function initRemoveButtons(){
         const btn = document.getElementById(`btn-remove-${i}`);
         btn.addEventListener("click", () =>{
             eatenFoods.splice(i, 1);
+            saveToLocalStorage('eatenFoods', eatenFoods);
             populateTable();
             calcTotals();
         });
     }
 }
 
-// Initialize the default food items
-const oats = new Food("Uncle Toby's Oats", 40, 153, 5.1, 22.7, 2);
-const frozenBerries = new Food("Mixed Frozen Berries", 150, 61, 1.3, 10.3, 5);
-const liteMilk = new Food("Lite Milk", 250, 111, 8.8, 11.5, 110);
-const foodItems = [oats, frozenBerries, liteMilk];
-sortFoodSelector();
+// Functions to manage local storage
+function saveToLocalStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+  
+function loadFromLocalStorage(key) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+}
 
-// Initialize the 'eaten foods' array
-const eatenFoods = [];
+let foodItems = loadFromLocalStorage("foodItems") || [
+    new Food("Uncle Toby's Oats", 40, 153, 5.1, 22.7, 2),
+    new Food("Mixed Frozen Berries", 150, 61, 1.3, 10.3, 5),
+    new Food("Lite Milk", 250, 111, 8.8, 11.5, 110)
+];
+sortFoodSelector(); // Sort the array alphabetically
+
+// Initialize the 'eaten foods' array and table
+let eatenFoods = loadFromLocalStorage('eatenFoods') || [];
+populateTable();
 
 // Initialize the totals
 let totalCals = 0;
 let totalProtein = 0;
 let totalCarbs = 0;
 let totalSodium = 0;
+calcTotals();
 
 // Initialize the food selector
 const foodSelector = document.getElementById("food-selector");
@@ -159,4 +173,12 @@ addBtn.addEventListener("click", () =>{
             break;
         }
     }
+});
+
+const clearBtn = document.querySelector(".btn-clear-table");
+clearBtn.addEventListener("click", ()=>{
+    eatenFoods.splice(0, eatenFoods.length);
+    saveToLocalStorage('eatenFoods', eatenFoods);
+    populateTable();
+    calcTotals();
 });

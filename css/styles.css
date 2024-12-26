@@ -15,6 +15,7 @@ h1{
     width: 50%;
     margin: auto;
     column-gap: 5em;
+    margin-bottom: 20px;
 }
 
 .input-container div{
