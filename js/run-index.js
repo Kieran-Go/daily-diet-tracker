@@ -1,11 +1,12 @@
-let foodItems = loadFromLocalStorage("foodItems") || [
+let foodItems = /*loadFromLocalStorage("foodItems") ||*/ [
     // Breakfast items
     new Food("Uncle Toby's Oats", 40, 153, 5.1, 22.7, 2),
     new Food("Mixed Frozen Berries", 150, 61, 1.3, 10.3, 5),
-    new Food("Lite Milk", 250, 111, 8.8, 11.5, 110)
+    new Food("Lite Milk", 250, 111, 8.8, 11.5, 110),
 
     // Lunch items
-
+    new Food("Apple", 120, 63, 0.31, 16.57, 0),
+    new Food("Almonds", 30, 176, 5.9, 1.6, 5),
     // Dinner items
 
     // Misc

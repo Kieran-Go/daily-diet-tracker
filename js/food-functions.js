@@ -41,10 +41,10 @@ function calcTotals(){
     }
 
     // Format decimal totals
-    if (totalCals % 1 !== 0) totalCals = totalCals.toFixed(2);
-    if (totalProtein % 1 !== 0) totalProtein = totalProtein.toFixed(2);
-    if (totalCarbs % 1 !== 0) totalCarbs = totalCarbs.toFixed(2);
-    if (totalSodium % 1 !== 0) totalSodium = totalSodium.toFixed(2);
+    if (totalCals % 1 !== 0) totalCals = totalCals.toFixed(1);
+    if (totalProtein % 1 !== 0) totalProtein = totalProtein.toFixed(1);
+    if (totalCarbs % 1 !== 0) totalCarbs = totalCarbs.toFixed(1);
+    if (totalSodium % 1 !== 0) totalSodium = totalSodium.toFixed(1);
 
     fillTotalsTable();
 }
@@ -95,10 +95,10 @@ function populateTable(){
         const food = eatenFoods[i];
 
         // Format values properly if they are decimals
-        const cals = food.cals % 1 == 0 ? food.cals : food.cals.toFixed(2);
-        const protein = food.protein % 1 == 0 ? food.protein : food.protein.toFixed(2);
-        const carbs = food.carbs % 1 == 0 ? food.carbs : food.carbs.toFixed(2);
-        const sodium = food.sodium % 1 == 0 ? food.sodium : food.sodium.toFixed(2);
+        const cals = food.cals % 1 == 0 ? food.cals : food.cals.toFixed(1);
+        const protein = food.protein % 1 == 0 ? food.protein : food.protein.toFixed(1);
+        const carbs = food.carbs % 1 == 0 ? food.carbs : food.carbs.toFixed(1);
+        const sodium = food.sodium % 1 == 0 ? food.sodium : food.sodium.toFixed(1);
 
         foodTable.innerHTML += `<tr>
         <td>${food.name}</td>
