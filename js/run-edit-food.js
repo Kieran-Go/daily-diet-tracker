@@ -1,0 +1,1 @@
+let foodItems = loadFromLocalStorage("foodItems");
