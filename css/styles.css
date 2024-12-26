@@ -5,14 +5,21 @@ html, body{
 }
 
 .header{
-    /* text-align: center; */
-    margin: 20px;
+    padding: 5px;
+    margin-bottom: 50px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: #3368e5;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5);
 }
 
-h1{
+.header h1{
     margin-left: -130px;
+    color: rgb(255, 254, 254);
+}
+
+.header a{
+    color: rgb(229, 226, 226);
 }
 
 .input-container{
@@ -42,9 +49,13 @@ h1{
 
 table {
     width: 50%;
-    max-width: 500px;
-    margin: 20px auto;
+    max-width: 800px;
+    margin: 30px auto;
     border-collapse: collapse;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
 }
 
 td:not(.btn-remove), th{
@@ -54,6 +65,7 @@ td:not(.btn-remove), th{
 
 .btn-remove{
     padding-left: 10px;
+    background-color: white;
 }
 
 caption{

@@ -55,7 +55,7 @@ function fillTotalsTable(){
     const carbData = document.getElementById("carb-data");
     const sodData = document.getElementById("sod-data");
 
-    calData.textContent = totalCals + " g";
+    calData.textContent = totalCals;
     proData.textContent = totalProtein + " g";
     carbData.textContent = totalCarbs + " g";
     sodData.textContent = totalSodium + " mg";
@@ -87,16 +87,26 @@ function populateTable(){
     // Reset the food table data
     foodTable.innerHTML = "";
 
+    // Format the food properties
+    
+
     // Populate the food table with the eaten food data
     for(let i = 0; i < eatenFoods.length; i++){
         const food = eatenFoods[i];
+
+        // Format values properly if they are decimals
+        const cals = food.cals % 1 == 0 ? food.cals : food.cals.toFixed(2);
+        const protein = food.protein % 1 == 0 ? food.protein : food.protein.toFixed(2);
+        const carbs = food.carbs % 1 == 0 ? food.carbs : food.carbs.toFixed(2);
+        const sodium = food.sodium % 1 == 0 ? food.sodium : food.sodium.toFixed(2);
+
         foodTable.innerHTML += `<tr>
         <td>${food.name}</td>
         <td>${food.serveSize}</td>
-        <td>${food.cals}</td>
-        <td>${food.protein}</td>
-        <td>${food.carbs}</td>
-        <td>${food.sodium}</td>
+        <td>${cals}</td>
+        <td>${protein}</td>
+        <td>${carbs}</td>
+        <td>${sodium}</td>
         <td class='btn-remove'><button id='btn-remove-${i}'>X</button></td>
         </tr>`
     }

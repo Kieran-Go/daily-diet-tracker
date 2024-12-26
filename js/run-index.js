@@ -1,7 +1,14 @@
 let foodItems = loadFromLocalStorage("foodItems") || [
+    // Breakfast items
     new Food("Uncle Toby's Oats", 40, 153, 5.1, 22.7, 2),
     new Food("Mixed Frozen Berries", 150, 61, 1.3, 10.3, 5),
     new Food("Lite Milk", 250, 111, 8.8, 11.5, 110)
+
+    // Lunch items
+
+    // Dinner items
+
+    // Misc
 ];
 sortFoodSelector(); // Sort the array alphabetically
 
