@@ -1,11 +1,12 @@
 // Food constructor
-function Food(name, serveSize, cals, protein, carbs, sodium){
+function Food(name, serveSize, cals, protein, carbs, sodium, type){
     this.name = name;
     this.serveSize = serveSize;
     this.cals = cals;
     this.protein = protein;
     this.carbs = carbs;
     this.sodium = sodium;
+    this.type = type;
 }
 
 function addFood(food, amount){
@@ -67,12 +68,39 @@ function resetDay(){
     populateTable();
 }
 
-function populateFoodSelector(){
-    for(let i = 0; i < foodItems.length; i++){
-        const food = foodItems[i].name;
-        foodSelector.innerHTML += `<option value="${food}">${food}</option>`;
+function populateFoodSelector() {
+    // Group food items by type
+    const groupedFoods = {
+        Breakfast: [],
+        Lunch: [],
+        Dinner: [],
+        Dessert: [],
+        Snack: [],
+        Misc: []
+    };
+
+    // Loop through the food items and group them
+    for (let i = 0; i < foodItems.length; i++) {
+        const food = foodItems[i];
+        groupedFoods[food.type].push(food.name);
+    }
+
+    // Populate the selector with grouped food items
+    for (let type in groupedFoods) {
+        if (groupedFoods[type].length > 0) {
+            // Create a category heading for each type
+            foodSelector.innerHTML += `<optgroup label="${type}">`;
+
+            // Add the food options for this type
+            groupedFoods[type].forEach(food => {
+                foodSelector.innerHTML += `<option value="${food}">${food}</option>`;
+            });
+
+            foodSelector.innerHTML += `</optgroup>`;
+        }
     }
 }
+
 
 function sortFoodSelector(){
     foodItems.sort((a, b) =>{
@@ -86,9 +114,6 @@ function populateTable(){
     const foodTable = document.querySelector(".food-table");
     // Reset the food table data
     foodTable.innerHTML = "";
-
-    // Format the food properties
-    
 
     // Populate the food table with the eaten food data
     for(let i = 0; i < eatenFoods.length; i++){
