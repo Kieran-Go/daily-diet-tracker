@@ -10,6 +10,7 @@ let foodItems = /*loadFromLocalStorage("foodItems") ||*/ [
     new Food("Bread - Wholemeal", 74, 174.2, 8.4, 26.2, 264, "Lunch"),
     new Food("English Leg Ham", 40, 36.3, 6.5, 0.6, 376, "Lunch"),
     new Food("Boiled Eggs", 104, 148, 12.7, 1.4, 141, "Lunch"),
+    new Food("Cheese", 25, 100.3, 5.9, 0.2, 174, "Lunch"),
 
     // Dinner items
     new Food("Steak - Oyster Blade", 200, 274, 40, 0, 172, "Dinner"),
