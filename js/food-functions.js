@@ -85,6 +85,9 @@ function populateFoodSelector() {
         groupedFoods[food.type].push(food.name);
     }
 
+    // Reset foodSelector inner html
+    foodSelector.innerHTML = "<option hidden disabled selected value></option>";
+
     // Populate the selector with grouped food items
     for (let type in groupedFoods) {
         if (groupedFoods[type].length > 0) {
