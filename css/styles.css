@@ -24,7 +24,24 @@ html, body{
 
 .header button{
     width: 15%;
+    min-width: 105px;
     height: 22px;
+    margin: 5px;
+}
+
+@media only screen and (max-width: 768px){
+    .header h1{
+        grid-column: 2;
+    }
+
+    .header-buttons{
+        grid-column: 1/3;
+    }
+
+    .table-container{
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 .input-container{
