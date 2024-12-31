@@ -1,4 +1,4 @@
-let foodItems = [
+let foodItems = loadFromLocalStorage("foodItems") || [
     // Breakfast items
     new Food("Uncle Toby's Oats", 40, 153, 5.1, 22.7, 2, "Breakfast"),
     new Food("Mixed Frozen Berries", 150, 61, 1.3, 10.3, 5, "Breakfast"),
@@ -29,7 +29,6 @@ let foodItems = [
     new Food("Extra Virgin Olive Oil", 15, 123.5, 0, 0, 0, "Misc"),
     new Food("Minced Garlic", 5, 4.7, 0.2, 1, 29, "Misc"),
 ];
-foodItems = loadFromLocalStorage("foodItems");
 sortFoodSelector(); // Sort the array alphabetically
 
 // Initialize the 'eaten foods' array and table
